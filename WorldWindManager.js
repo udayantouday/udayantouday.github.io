@@ -2996,7 +2996,7 @@ async function VisualizeMobileThings(){
                         mobGeoJSON.features[i].properties.params.info.placemarkType = "mobiothings";
                        // mobGeoJSON.features[i].properties.providerID = "safecast";
                         
-                        var placemarkAttr = CreatePlacemarkAttributes("/lib/"+imgFileName);
+                        var placemarkAttr = CreatePlacemarkAttributes("/images/"+imgFileName);
                         var highlightAttr = CreateHighlightAttributes(placemarkAttr);
                         placemarkAttr.highlightAttributes = highlightAttr;
 
