@@ -2809,9 +2809,9 @@ function stopTimeSeriesAnimation(){
     var selectedVal = selectedStOrMobDiv.options[selectedStOrMobDiv.selectedIndex].value;
 
     if(selectedVal == 'M'){
-        wwd.addLayer(markerClusterMobTh);
+        markerClusterMobTh.addClusterLayer();
     } else if (selectedVal == 'S'){
-        wwd.addLayer(markerCluster);
+        markerCluster.addClusterLayer();
     }
     
     time_step=0;
