@@ -2978,7 +2978,11 @@ async function VisualizeMobileThings(){
                         mobGeoJSON.features[i].properties.params.info.sievert =  mobGeoJSON.features[i].properties.name.split(" ")[0];
                         mobGeoJSON.features[i].properties.params.info.sievertUnit =  mobGeoJSON.features[i].properties.name.split(" ")[1];
                         //mobGeoJSON.features[i].properties.params.info.icon = mobGeoJSON.features[i].properties.icon;
-    
+                        
+                        
+                        var imgFileName = mobGeoJSON.features[i].properties.icon.split("/kml/")[1];
+                        
+
                         var year = descrArr[0].substr(descrArr[0].length-4);
                         var month = descrArr[1];
                         var day_date =  descrArr[2].split(" ")[0];
@@ -2992,7 +2996,7 @@ async function VisualizeMobileThings(){
                         mobGeoJSON.features[i].properties.params.info.placemarkType = "mobiothings";
                        // mobGeoJSON.features[i].properties.providerID = "safecast";
                         
-                        var placemarkAttr = CreatePlacemarkAttributes(mobGeoJSON.features[i].properties.icon);
+                        var placemarkAttr = CreatePlacemarkAttributes("/lib/"+imgFileName);
                         var highlightAttr = CreateHighlightAttributes(placemarkAttr);
                         placemarkAttr.highlightAttributes = highlightAttr;
 
