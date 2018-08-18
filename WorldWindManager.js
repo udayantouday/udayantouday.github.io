@@ -1518,7 +1518,7 @@ function getPosition(el) {
 
 
     wwd.navigator.lookAtLocation = chosenLoc;
-    wwd.navigator.range = 6e5;
+    wwd.navigator.range = 5e5;
 
     wwd.redraw();
  }
