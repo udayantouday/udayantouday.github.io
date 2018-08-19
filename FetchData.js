@@ -205,9 +205,15 @@ var cndCityParamsActual = ['Calgary','Edmonton','Kamloops','Kluane Lake','Montre
 
 				for(i=0;i<values[0].length;i++){
 
+					var thingTag = ["air quality"];
+
 					values[0][i].name = values[0][i].location;
 					values[0][i].providerID = "openaq";
-					values[0][i].thingTag = ["air quality"];
+					
+
+					for(j=0;j<values[0][i].measurements.length;j++){
+						thingTag.push(values[0][i].measurements[j].parameter);
+					}
 					//values[0][i].lastSeen = values[0][i].lastUpdated;
 					//delete values[0][i].lastUpdated;
 
@@ -219,6 +225,7 @@ var cndCityParamsActual = ['Calgary','Edmonton','Kamloops','Kluane Lake','Montre
 					{
 					  values[0][i].latitude = values[0][i].coordinates.latitude;
 					  values[0][i].longitude = values[0][i].coordinates.longitude;
+					  values[0][i].thingTag = thingTag;
 					  delete values[0][i].coordinates;
 					  tempOAQ.push(values[0][i]);
 					}
@@ -1168,7 +1175,7 @@ function StartApp() {
 
 	Promise.all([prom_worldwindstart]).then(function(values){
 
-		setTimeout(fetchData,1250);
+		setTimeout(fetchData,500);
 		//var prom_fetch_data = fetchData();
 	});
 	//console.log("Triggering search....");
@@ -1209,6 +1216,7 @@ async function ExtractAllThingsLocation(){
 
 	for(i=0;i<tempOSM.length;i++){
 		var sensorList = [];
+		var thingTag = ["air quality"];
 		var OSMTh = {
 			// Relevant parameters would go here
 			"name" : tempOSM[i].name,
@@ -1216,7 +1224,7 @@ async function ExtractAllThingsLocation(){
 			"longitude" : tempOSM[i].currentLocation.coordinates[0],
 			"providerID" : "opensensemap",
 			"channelID":tempOSM[i]["_id"],
-			"thingTag": ["air quality"],
+			//"thingTag": ["air quality"],
 			
 		};
 		for(j=0;j<tempOSM[i].sensors.length;j++){
@@ -1226,6 +1234,7 @@ async function ExtractAllThingsLocation(){
 				"Unit" : tempOSM[i].sensors[j].unit,
 				"Sensor" : tempOSM[i].sensors[j].sensorType,
 			}
+			thingTag.push(tempOSM[i].sensors[j].title);
 			if((tempOSM[i].sensors[j].lastMeasurement)){
 				sensorListDet["Last Value"] =  tempOSM[i].sensors[j].lastMeasurement.value;
 				sensorListDet["Last Seen"] = tempOSM[i].sensors[j].lastMeasurement.createdAt;
@@ -1236,6 +1245,7 @@ async function ExtractAllThingsLocation(){
 			
 			sensorList.push(sensorListDet);
 		}
+		OSMTh.thingTag = thingTag;
 		OSMTh["sensorList"] = sensorList;
 
 		allThingsPreviewDB.push(OSMTh);
@@ -1349,7 +1359,7 @@ async function ExtractAllThingsLocation(){
 		var sensorList = [];
 
 		SafecastArrEl.providerID = "safecast";
-		SafecastArrEl.thingTag = ["air quality","radiation","nuclear","alpha","gamma"];
+		SafecastArrEl.thingTag = ["air quality","radiation","nuclear","alpha","gamma","nuclear radiation"];
 		SafecastArrEl.latitude = tempSafecast[i].lat;
 		SafecastArrEl.longitude = tempSafecast[i].lon;
 
