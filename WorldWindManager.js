@@ -2957,16 +2957,18 @@ function OnChangeStationaryMobile(){
                 existingEl.parentNode.removeChild(existingEl);
             }
 
-            if(!typeof markerCluster == 'undefined'){
+           // if(!typeof markerCluster == 'undefined'){
                 //markerCluster.showAllLevels();
-                markerCluster.updateGlobe(wwd);
-                markerCluster.addClusterLayer();
-
-                wwd = markerCluster.getGlobe();
-                //wwd.addLayer("All Things Cluster");
-                wwd.redraw();
                
-            }
+               
+           // }
+
+            markerCluster.updateGlobe(wwd);
+            markerCluster.addClusterLayer();
+
+            wwd = markerCluster.getGlobe();
+            //wwd.addLayer("All Things Cluster");
+            wwd.redraw();
             //wwd.redraw();
 
     }
