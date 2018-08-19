@@ -905,7 +905,9 @@ async function CreateWWDIoTRadialMark(ThingsLocationArr){
 async function CreateClusteredThings(ThingsLocationArr){
 
     if(!(typeof markerCluster == 'undefined')){
-        markerCluster.hideAllLevels();
+       // markerCluster.hideAllLevels();
+       // markerCluster.hideAllSingle();
+        markerCluster.removeClusterLayer();
         wwd.redraw();
         delete markerCluster;
     }
@@ -1682,17 +1684,13 @@ function TrigHistoricalTimeSeries(){
     wwd.removeLayer(placemarkLayerAllDev);
     wwd.removeLayer(placemarkLayerDevByLoc);
 
-    
-        
-   
-
-    
-   
 
     if(document.getElementById("StationaryOrMobile").options[(document.getElementById("StationaryOrMobile")).selectedIndex].value == "S"){
         
         if(!typeof markerCluster == 'undefined'){
-            markerCluster.hideAllLevels();
+            //markerCluster.hideAllLevels();
+            //markerCluster.hideAllSingle();
+            markerCluster.removeClusterLayer();
         }
         wwd.redraw();
         
@@ -1703,15 +1701,16 @@ function TrigHistoricalTimeSeries(){
         });
     } else if (document.getElementById("StationaryOrMobile").options[(document.getElementById("StationaryOrMobile")).selectedIndex].value == "M") {
         
-        
-        
 
         if(document.getElementById("selectSensor").options.length == 0){
             VisualizeMobileThings();
         } else {
 
             if(!typeof markerClusterMobTh == 'undefined'){
-                markerClusterMobTh.hideAllLevels();
+                //markerClusterMobTh.hideAllLevels();
+                //markerClusterMobTh.hideAllSingle();
+                markerClusterMobTh.removeClusterLayer();
+                
             }
             wwd.redraw();
 
@@ -1999,12 +1998,16 @@ function TrigReturnAllDevices(){
     if(document.getElementById("StationaryOrMobile").options[(document.getElementById("StationaryOrMobile")).selectedIndex].value == "S"){
 
         if(!typeof markerCluster == 'undefined'){
-            markerCluster.hideAllLevels();
+           // markerCluster.hideAllLevels();
+           // markerCluster.hideAllSingle();
+           markerCluster.removeClusterLayer();
         }
 
     } else if(document.getElementById("StationaryOrMobile").options[(document.getElementById("StationaryOrMobile")).selectedIndex].value == "M"){
         if(!typeof markerClusterMobTh == 'undefined'){
-            markerClusterMobTh.hideAllLevels();
+            //markerClusterMobTh.hideAllLevels();
+            //markerClusterMobTh.hideAllSingle();
+            markerClusterMobTh.removeClusterLayer();
         }
     }
     
@@ -2025,7 +2028,9 @@ async function SearchByCountryAndDraw(){
     wwd.removeLayer(placemarkLayerDevByLoc);
 
     if(!typeof markerCluster == 'undefined'){
-        markerCluster.hideAllLevels();
+       // markerCluster.hideAllLevels();
+       // markerCluster.hideAllSingle();
+       markerCluster.removeClusterLayer();
     }
 
      placemarkLayerDevByLoc.removeAllRenderables();
@@ -2160,7 +2165,9 @@ async function SearchByCityAndDraw(){
     wwd.removeLayer(placemarkLayerDevByLoc);
 
     if(!typeof markerCluster == 'undefined'){
-        markerCluster.hideAllLevels();
+        //markerCluster.hideAllLevels();
+        //markerCluster.hideAllSingle();
+        markerCluster.removeClusterLayer();
     }
 
     placemarkLayerDevByLoc.removeAllRenderables();
@@ -2816,9 +2823,12 @@ function stopTimeSeriesAnimation(){
     var selectedVal = selectedStOrMobDiv.options[selectedStOrMobDiv.selectedIndex].value;
 
     if(selectedVal == 'M'){
-        markerClusterMobTh.showAllLevels();
+        //markerClusterMobTh.showAllLevels();
+        //markerClusterMobTh.showAllSingle();
+        markerClusterMobTh.addClusterLayer();
     } else if (selectedVal == 'S'){
-        markerCluster.showAllLevels();
+        //markerCluster.showAllLevels();
+        markerCluster.addClusterLayer();
     }
     
     time_step=0;
@@ -2838,8 +2848,10 @@ function OnChangeStationaryMobile(){
         wwd.removeLayer(placemarkLayerDevByLoc);
 
 
-        markerCluster.hideAllLevels();
-        wwd.redraw();
+       // markerCluster.hideAllLevels();
+       // markerCluster.hideAllSingle();
+        markerCluster.removeClusterLayer();
+        //wwd.redraw();
 
         document.getElementById("startTime").disabled = false;
         document.getElementById("endTime").disabled = false;
@@ -2867,17 +2879,20 @@ function OnChangeStationaryMobile(){
         document.getElementById('submitStartEndDateTime').disabled = true;
 
         if(!typeof markerClusterMobTh == 'undefined'){
-            markerClusterMobTh.showAllLevels();
+            //markerClusterMobTh.showAllLevels();
+            markerClusterMobTh.addClusterLayer();
         }
+        wwd.redraw();
 
 
     } else if (selectedVal == 'S') {
 
         document.getElementById('mobileThingsDraw').disabled = true;
 
-        markerClusterMobTh.hideAllLevels();
-        wwd.redraw();
-
+        //markerClusterMobTh.hideAllLevels();
+        //markerClusterMobTh.hideAllSingle();
+        markerClusterMobTh.removeClusterLayer();
+       
         document.getElementById("startTime").disabled = true;
         document.getElementById("endTime").disabled = true;
         document.getElementById('selectToSee').innerHTML = "Sensor to see";
@@ -2893,8 +2908,11 @@ function OnChangeStationaryMobile(){
             }
 
             if(!typeof markerCluster == 'undefined'){
-                markerCluster.showAllLevels();
+                //markerCluster.showAllLevels();
+                markerClusterMobTh.addClusterLayer();
+               
             }
+            wwd.redraw();
 
     }
 
@@ -2929,7 +2947,9 @@ async function VisualizeMobileThings(){
     removeOptions(document.getElementById("selectSensor"));
 
     if(!(typeof markerClusterMobTh == 'undefined')){
-        markerClusterMobTh.hideAllLevels();
+        //markerClusterMobTh.hideAllLevels();
+       // markerClusterMobTh.hideAllSingle();
+        markerClusterMobTh.removeClusterLayer();
         wwd.redraw();
         delete markerClusterMobTh;
     }
