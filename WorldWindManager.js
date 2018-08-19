@@ -1691,7 +1691,7 @@ function TrigHistoricalTimeSeries(){
 
     if(document.getElementById("StationaryOrMobile").options[(document.getElementById("StationaryOrMobile")).selectedIndex].value == "S"){
         
-        if(!typeof markerCluster == 'undefined'){
+        if(!(typeof markerCluster == 'undefined')){
             //markerCluster.hideAllLevels();
             //markerCluster.hideAllSingle();
             markerCluster.updateGlobe(wwd);
@@ -1714,7 +1714,7 @@ function TrigHistoricalTimeSeries(){
             VisualizeMobileThings();
         } else {
 
-            if(!typeof markerClusterMobTh == 'undefined'){
+            if(typeof markerClusterMobTh !== 'undefined'){
                 //markerClusterMobTh.hideAllLevels();
                 //markerClusterMobTh.hideAllSingle();
                 markerClusterMobTh.updateGlobe(wwd);
@@ -2009,7 +2009,7 @@ function TrigReturnAllDevices(){
     //wwd.addLayer(placemarkLayerAllDev);
     if(document.getElementById("StationaryOrMobile").options[(document.getElementById("StationaryOrMobile")).selectedIndex].value == "S"){
 
-        if(!typeof markerCluster == 'undefined'){
+        if(!(typeof markerCluster == 'undefined')){
            // markerCluster.hideAllLevels();
            // markerCluster.hideAllSingle();
            markerCluster.updateGlobe(wwd);
@@ -2020,7 +2020,7 @@ function TrigReturnAllDevices(){
         }
 
     } else if(document.getElementById("StationaryOrMobile").options[(document.getElementById("StationaryOrMobile")).selectedIndex].value == "M"){
-        if(!typeof markerClusterMobTh == 'undefined'){
+        if(!(typeof markerClusterMobTh == 'undefined')){
             //markerClusterMobTh.hideAllLevels();
             //markerClusterMobTh.hideAllSingle();
             markerClusterMobTh.updateGlobe(wwd);
@@ -2047,7 +2047,7 @@ async function SearchByCountryAndDraw(){
     wwd.removeLayer(placemarkLayerAllDev);
     wwd.removeLayer(placemarkLayerDevByLoc);
 
-    if(!typeof markerCluster == 'undefined'){
+    if(!(typeof markerCluster == 'undefined')){
        // markerCluster.hideAllLevels();
        // markerCluster.hideAllSingle();
        markerCluster.updateGlobe(wwd);
@@ -2188,7 +2188,7 @@ async function SearchByCityAndDraw(){
     wwd.removeLayer(placemarkLayerAllDev);
     wwd.removeLayer(placemarkLayerDevByLoc);
 
-    if(!typeof markerCluster == 'undefined'){
+    if(!(typeof markerCluster == 'undefined')){
         //markerCluster.hideAllLevels();
         //markerCluster.hideAllSingle();
         markerCluster.updateGlobe(wwd);
@@ -2918,7 +2918,7 @@ function OnChangeStationaryMobile(){
 
         document.getElementById('submitStartEndDateTime').disabled = true;
 
-        if(!typeof markerClusterMobTh == 'undefined'){
+        if(!(typeof markerClusterMobTh == 'undefined')){
             //markerClusterMobTh.showAllLevels();
             markerClusterMobTh.updateGlobe(wwd);
             markerClusterMobTh.addClusterLayer();
