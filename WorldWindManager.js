@@ -1683,9 +1683,7 @@ function TrigHistoricalTimeSeries(){
     wwd.removeLayer(placemarkLayerDevByLoc);
 
     
-        if(!typeof markerCluster == 'undefined'){
-            markerCluster.hideAllLevels();
-        }
+        
    
 
     
@@ -1998,10 +1996,18 @@ function TrigReturnAllDevices(){
     wwd.removeLayer(placemarkLayerDevByLoc);
 
     //wwd.addLayer(placemarkLayerAllDev);
+    if(document.getElementById("StationaryOrMobile").options[(document.getElementById("StationaryOrMobile")).selectedIndex].value == "S"){
 
-    if(!typeof markerCluster == 'undefined'){
-        markerCluster.showAllLevels();
+        if(!typeof markerCluster == 'undefined'){
+            markerCluster.hideAllLevels();
+        }
+
+    } else if(document.getElementById("StationaryOrMobile").options[(document.getElementById("StationaryOrMobile")).selectedIndex].value == "M"){
+        if(!typeof markerClusterMobTh == 'undefined'){
+            markerClusterMobTh.hideAllLevels();
+        }
     }
+    
 
     wwd.redraw();
 
@@ -2559,7 +2565,7 @@ async function DrawPolygonMobThTimeSeries(data_val_arr, data_centraLoc){
     timeSeriesLayer.removeAllRenderables();
     timeSeriesLayer.displayName = "Time Series Polygons";
     timeSeriesLayer.enabled = true;
-    wwd.redraw();
+    //wwd.redraw();
 
         
     data_val_arr.reverse();
@@ -2860,12 +2866,16 @@ function OnChangeStationaryMobile(){
 
         document.getElementById('submitStartEndDateTime').disabled = true;
 
+        if(!typeof markerClusterMobTh == 'undefined'){
+            markerClusterMobTh.showAllLevels();
+        }
+
 
     } else if (selectedVal == 'S') {
 
         document.getElementById('mobileThingsDraw').disabled = true;
 
-        markerCluster.showAllLevels();
+        markerClusterMobTh.hideAllLevels();
         wwd.redraw();
 
         document.getElementById("startTime").disabled = true;
@@ -2880,6 +2890,10 @@ function OnChangeStationaryMobile(){
             if(!!(document.getElementById("existingThingsSummary"))){
                 var existingEl = document.getElementById("existingThingsSummary");
                 existingEl.parentNode.removeChild(existingEl);
+            }
+
+            if(!typeof markerCluster == 'undefined'){
+                markerCluster.showAllLevels();
             }
 
     }
@@ -3066,7 +3080,7 @@ function CreatePlacemarkAttributes(imgSource){
 
       // Define the pivot point for the placemark at the center of its image source.
       placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5, WorldWind.OFFSET_FRACTION, 0.5);
-      placemarkAttributes.imageScale = 1.5;
+      placemarkAttributes.imageScale = 0.8;
       //placemarkAttributes.imageColor = WorldWind.Color.WHITE;
       //placemarkAttributes.interiorColor = new WorldWind.Color(0, 1, 1, 0.5);
       //placemarkAttributes.outlineColor = WorldWind.Color.BLUE;
@@ -3083,7 +3097,7 @@ function CreatePlacemarkAttributes(imgSource){
 
 function CreateHighlightAttributes(placemarkAttr){
       var highlightAttributes = new WorldWind.PlacemarkAttributes(placemarkAttr);
-      highlightAttributes.imageScale = 1.85;
+      highlightAttributes.imageScale = 1;
       highlightAttributes.imageSource = placemarkAttr.imageSource;
       //highlightAttributes.imageSource = "images/thing_node_highlight.png";
       
