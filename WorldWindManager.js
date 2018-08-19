@@ -3065,7 +3065,7 @@ function CreatePlacemarkAttributes(imgSource){
 
       // Define the pivot point for the placemark at the center of its image source.
       placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5, WorldWind.OFFSET_FRACTION, 0.5);
-      placemarkAttributes.imageScale = 0.6;
+      placemarkAttributes.imageScale = 1.5;
       //placemarkAttributes.imageColor = WorldWind.Color.WHITE;
       //placemarkAttributes.interiorColor = new WorldWind.Color(0, 1, 1, 0.5);
       //placemarkAttributes.outlineColor = WorldWind.Color.BLUE;
@@ -3082,7 +3082,7 @@ function CreatePlacemarkAttributes(imgSource){
 
 function CreateHighlightAttributes(placemarkAttr){
       var highlightAttributes = new WorldWind.PlacemarkAttributes(placemarkAttr);
-      highlightAttributes.imageScale = 0.8;
+      highlightAttributes.imageScale = 1.85;
       highlightAttributes.imageSource = placemarkAttr.imageSource;
       //highlightAttributes.imageSource = "images/thing_node_highlight.png";
       
