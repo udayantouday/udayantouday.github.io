@@ -2773,7 +2773,7 @@ async function DrawPolygonMobThTimeSeries(data_val_arr, data_centraLoc){
 
         wwd.addLayer(timeSeriesLayer);
 
-        wwd.navigator.range = 350000;
+        wwd.navigator.range = 55000;
         wwd.navigator.tilt = 60;
         wwd.navigator.lookAtLocation = data_centraLoc;
        
