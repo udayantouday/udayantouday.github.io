@@ -907,7 +907,10 @@ async function CreateClusteredThings(ThingsLocationArr){
     if(!(typeof markerCluster == 'undefined')){
        // markerCluster.hideAllLevels();
        // markerCluster.hideAllSingle();
-        markerCluster.removeClusterLayer();
+        //markerCluster.removeClusterLayer();
+
+        wwd.removeLayer("All Things Cluster");
+        wwd.redraw();
         //wwd.redraw();
         delete markerCluster;
     }
@@ -1690,7 +1693,9 @@ function TrigHistoricalTimeSeries(){
         if(!typeof markerCluster == 'undefined'){
             //markerCluster.hideAllLevels();
             //markerCluster.hideAllSingle();
-            markerCluster.removeClusterLayer();
+            //markerCluster.removeClusterLayer();
+            wwd.removeLayer("All Things Cluster");
+            wwd.redraw();
         }
         //wwd.redraw();
         
@@ -1709,7 +1714,9 @@ function TrigHistoricalTimeSeries(){
             if(!typeof markerClusterMobTh == 'undefined'){
                 //markerClusterMobTh.hideAllLevels();
                 //markerClusterMobTh.hideAllSingle();
-                markerClusterMobTh.removeClusterLayer();
+                //markerClusterMobTh.removeClusterLayer();
+                wwd.removeLayer("Mob Things Cluster");
+                wwd.redraw();
                 
             }
            // wwd.redraw();
@@ -2000,14 +2007,18 @@ function TrigReturnAllDevices(){
         if(!typeof markerCluster == 'undefined'){
            // markerCluster.hideAllLevels();
            // markerCluster.hideAllSingle();
-           markerCluster.removeClusterLayer();
+           //markerCluster.removeClusterLayer();
+           wwd.removeLayer("All Things Cluster");
+           wwd.redraw();
         }
 
     } else if(document.getElementById("StationaryOrMobile").options[(document.getElementById("StationaryOrMobile")).selectedIndex].value == "M"){
         if(!typeof markerClusterMobTh == 'undefined'){
             //markerClusterMobTh.hideAllLevels();
             //markerClusterMobTh.hideAllSingle();
-            markerClusterMobTh.removeClusterLayer();
+            //markerClusterMobTh.removeClusterLayer();
+            wwd.removeLayer("Mob Things Cluster");
+            wwd.redraw();
         }
     }
     
@@ -2030,7 +2041,9 @@ async function SearchByCountryAndDraw(){
     if(!typeof markerCluster == 'undefined'){
        // markerCluster.hideAllLevels();
        // markerCluster.hideAllSingle();
-       markerCluster.removeClusterLayer();
+       //markerCluster.removeClusterLayer();
+       wwd.removeLayer("All Things Cluster");
+       wwd.redraw();
     }
 
      placemarkLayerDevByLoc.removeAllRenderables();
@@ -2167,7 +2180,9 @@ async function SearchByCityAndDraw(){
     if(!typeof markerCluster == 'undefined'){
         //markerCluster.hideAllLevels();
         //markerCluster.hideAllSingle();
-        markerCluster.removeClusterLayer();
+        //markerCluster.removeClusterLayer();
+        wwd.removeLayer("All Things Cluster");
+        wwd.redraw();
     }
 
     placemarkLayerDevByLoc.removeAllRenderables();
@@ -2824,10 +2839,14 @@ function stopTimeSeriesAnimation(){
     if(selectedVal == 'M'){
         //markerClusterMobTh.showAllLevels();
         //markerClusterMobTh.showAllSingle();
-        markerClusterMobTh.addClusterLayer();
+        //markerClusterMobTh.addClusterLayer();
+        wwd.addLayer("Mob Things Cluster");
+        //wwd.redraw();
     } else if (selectedVal == 'S'){
         //markerCluster.showAllLevels();
-        markerCluster.addClusterLayer();
+        //markerCluster.addClusterLayer();
+        wwd.addLayer("All Things Cluster");
+        //wwd.redraw();
     }
     
     time_step=0;
@@ -2848,7 +2867,9 @@ function OnChangeStationaryMobile(){
 
        // markerCluster.hideAllLevels();
        // markerCluster.hideAllSingle();
-        markerCluster.removeClusterLayer();
+        //markerCluster.removeClusterLayer();
+        wwd.removeLayer("All Things Cluster");
+        wwd.redraw();
         //wwd.redraw();
 
         document.getElementById("startTime").disabled = false;
@@ -2878,7 +2899,9 @@ function OnChangeStationaryMobile(){
 
         if(!typeof markerClusterMobTh == 'undefined'){
             //markerClusterMobTh.showAllLevels();
-            markerClusterMobTh.addClusterLayer();
+           // markerClusterMobTh.addClusterLayer();
+           wwd.addLayer("Mob Things Cluster");
+           wwd.redraw();
         }
         //wwd.redraw();
 
@@ -2890,7 +2913,9 @@ function OnChangeStationaryMobile(){
         //markerClusterMobTh.hideAllLevels();
         //markerClusterMobTh.hideAllSingle();
         if(!typeof markerClusterMobTh == 'undefined'){
-            markerClusterMobTh.removeClusterLayer();
+            //markerClusterMobTh.removeClusterLayer();
+            wwd.removeLayer("Mob Things Cluster");
+            wwd.redraw();
         }
        
         document.getElementById("startTime").disabled = true;
@@ -2909,7 +2934,9 @@ function OnChangeStationaryMobile(){
 
             if(!typeof markerCluster == 'undefined'){
                 //markerCluster.showAllLevels();
-                markerClusterMobTh.addClusterLayer();
+                //markerClusterMobTh.addClusterLayer();
+                wwd.addLayer("All Things Cluster");
+                wwd.redraw();
                
             }
             //wwd.redraw();
@@ -2948,7 +2975,9 @@ async function VisualizeMobileThings(){
     if(!(typeof markerClusterMobTh == 'undefined')){
         //markerClusterMobTh.hideAllLevels();
        // markerClusterMobTh.hideAllSingle();
-        markerClusterMobTh.removeClusterLayer();
+        //markerClusterMobTh.removeClusterLayer();
+        wwd.removeLayer("Mob Things Cluster");
+        wwd.redraw();
         //wwd.redraw();
         delete markerClusterMobTh;
     }
