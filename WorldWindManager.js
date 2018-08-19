@@ -3012,8 +3012,8 @@ async function VisualizeMobileThings(){
         delete markerClusterMobTh;
     }
 
-   if (typeof markerCluster == 'undefined') {
-    markerClusterMobTh = new MarkerCluster(wwd, {
+   if (typeof markerClusterMobTh == 'undefined') {
+           markerClusterMobTh = new MarkerCluster(wwd, {
                 maxLevel: 7,
                 smooth: false,
                 name: "Mob Things Cluster",
