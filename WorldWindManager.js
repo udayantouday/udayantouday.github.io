@@ -908,7 +908,7 @@ async function CreateClusteredThings(ThingsLocationArr){
        // markerCluster.hideAllLevels();
        // markerCluster.hideAllSingle();
         markerCluster.removeClusterLayer();
-        wwd.redraw();
+        //wwd.redraw();
         delete markerCluster;
     }
 
@@ -1328,7 +1328,7 @@ async function CreateClusteredThings(ThingsLocationArr){
 
     markerCluster.generateClusterFromPlacemarksArray();
 
-    wwd.redraw();
+    //wwd.redraw();
     // Now set up to handle highlighting.
     var highlightController = new WorldWind.HighlightController(wwd);
 
@@ -1692,7 +1692,7 @@ function TrigHistoricalTimeSeries(){
             //markerCluster.hideAllSingle();
             markerCluster.removeClusterLayer();
         }
-        wwd.redraw();
+        //wwd.redraw();
         
         var prom = GenerateHistoricalTimeSeries();
 
@@ -2880,7 +2880,7 @@ function OnChangeStationaryMobile(){
             //markerClusterMobTh.showAllLevels();
             markerClusterMobTh.addClusterLayer();
         }
-        wwd.redraw();
+        //wwd.redraw();
 
 
     } else if (selectedVal == 'S') {
@@ -2889,7 +2889,9 @@ function OnChangeStationaryMobile(){
 
         //markerClusterMobTh.hideAllLevels();
         //markerClusterMobTh.hideAllSingle();
-        markerClusterMobTh.removeClusterLayer();
+        if(!typeof markerClusterMobTh == 'undefined'){
+            markerClusterMobTh.removeClusterLayer();
+        }
        
         document.getElementById("startTime").disabled = true;
         document.getElementById("endTime").disabled = true;
@@ -2947,11 +2949,11 @@ async function VisualizeMobileThings(){
         //markerClusterMobTh.hideAllLevels();
        // markerClusterMobTh.hideAllSingle();
         markerClusterMobTh.removeClusterLayer();
-        wwd.redraw();
+        //wwd.redraw();
         delete markerClusterMobTh;
     }
 
-   // if (typeof markerCluster == 'undefined') {
+   if (typeof markerCluster == 'undefined') {
     markerClusterMobTh = new MarkerCluster(wwd, {
                 maxLevel: 7,
                 smooth: false,
@@ -2961,6 +2963,7 @@ async function VisualizeMobileThings(){
                 //attributeColor: null,
                 radius: 45
         });
+    }
 
     for(i=0;i<mobileThingsDB.length;i++){
 
