@@ -2959,10 +2959,10 @@ function OnChangeStationaryMobile(){
 
             if(!typeof markerCluster == 'undefined'){
                 //markerCluster.showAllLevels();
-                markerClusterMobTh.updateGlobe(wwd);
-                markerClusterMobTh.addClusterLayer();
+                markerCluster.updateGlobe(wwd);
+                markerCluster.addClusterLayer();
 
-                wwd = markerClusterMobTh.getGlobe();
+                wwd = markerCluster.getGlobe();
                 //wwd.addLayer("All Things Cluster");
                 wwd.redraw();
                
