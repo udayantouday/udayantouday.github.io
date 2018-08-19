@@ -1712,7 +1712,7 @@ function TrigHistoricalTimeSeries(){
                 markerClusterMobTh.removeClusterLayer();
                 
             }
-            wwd.redraw();
+           // wwd.redraw();
 
             var selectedID = document.getElementById("selectSensor").options[(document.getElementById("selectSensor")).selectedIndex].value;
         
@@ -2846,7 +2846,6 @@ function OnChangeStationaryMobile(){
         wwd.removeLayer(placemarkLayerAllDev);
         wwd.removeLayer(placemarkLayerDevByLoc);
 
-
        // markerCluster.hideAllLevels();
        // markerCluster.hideAllSingle();
         markerCluster.removeClusterLayer();
@@ -2920,7 +2919,6 @@ function OnChangeStationaryMobile(){
 function TrigMobileThingsVis(){
     VisualizeMobileThings();
 }
-
 
 async function copyToMobileDB(jsDB){
     mobileThingsDB.length=0;
