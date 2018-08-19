@@ -1168,7 +1168,7 @@ function StartApp() {
 
 	Promise.all([prom_worldwindstart]).then(function(values){
 
-		setTimeout(fetchData,2000);
+		setTimeout(fetchData,1250);
 		//var prom_fetch_data = fetchData();
 	});
 	//console.log("Triggering search....");
