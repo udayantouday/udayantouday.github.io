@@ -2911,7 +2911,7 @@ function OnChangeStationaryMobile(){
                 markerClusterMobTh.addClusterLayer();
                
             }
-            wwd.redraw();
+            //wwd.redraw();
 
     }
 
