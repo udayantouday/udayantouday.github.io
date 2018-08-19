@@ -907,11 +907,11 @@ async function CreateClusteredThings(ThingsLocationArr){
     if(!(typeof markerCluster == 'undefined')){
        // markerCluster.hideAllLevels();
        // markerCluster.hideAllSingle();
-        //markerCluster.removeClusterLayer();
-
-        wwd.removeLayer("All Things Cluster");
+        markerCluster.updateGlobe(wwd);
+        markerCluster.removeClusterLayer();
+        wwd = markerCluster.getGlobe();
         wwd.redraw();
-        //wwd.redraw();
+        
         delete markerCluster;
     }
 
@@ -926,7 +926,8 @@ async function CreateClusteredThings(ThingsLocationArr){
                 radius: 45
         });
    // }
-
+    //delete wwd;
+    wwd = markerCluster.getGlobe();
     //placemarkLayerAllDev.removeAllRenderables();
 
     allThingsDB = clone(ThingsLocationArr);
@@ -1330,7 +1331,7 @@ async function CreateClusteredThings(ThingsLocationArr){
     //wwd.addLayer(placemarkLayerAllDev);
 
     markerCluster.generateClusterFromPlacemarksArray();
-
+    wwd = markerCluster.getGlobe();
     //wwd.redraw();
     // Now set up to handle highlighting.
     var highlightController = new WorldWind.HighlightController(wwd);
@@ -1693,8 +1694,10 @@ function TrigHistoricalTimeSeries(){
         if(!typeof markerCluster == 'undefined'){
             //markerCluster.hideAllLevels();
             //markerCluster.hideAllSingle();
-            //markerCluster.removeClusterLayer();
-            wwd.removeLayer("All Things Cluster");
+            markerCluster.updateGlobe(wwd);
+            markerCluster.removeClusterLayer();
+            wwd = markerCluster.getGlobe();
+            //wwd.removeLayer("All Things Cluster");
             wwd.redraw();
         }
         //wwd.redraw();
@@ -1714,8 +1717,10 @@ function TrigHistoricalTimeSeries(){
             if(!typeof markerClusterMobTh == 'undefined'){
                 //markerClusterMobTh.hideAllLevels();
                 //markerClusterMobTh.hideAllSingle();
-                //markerClusterMobTh.removeClusterLayer();
-                wwd.removeLayer("Mob Things Cluster");
+                markerClusterMobTh.updateGlobe(wwd);
+                markerClusterMobTh.removeClusterLayer();
+                wwd = markerClusterMobTh.getGlobe();
+                //wwd.removeLayer("Mob Things Cluster");
                 wwd.redraw();
                 
             }
@@ -2007,8 +2012,10 @@ function TrigReturnAllDevices(){
         if(!typeof markerCluster == 'undefined'){
            // markerCluster.hideAllLevels();
            // markerCluster.hideAllSingle();
-           //markerCluster.removeClusterLayer();
-           wwd.removeLayer("All Things Cluster");
+           markerCluster.updateGlobe(wwd);
+           markerCluster.removeClusterLayer();
+           wwd = markerCluster.getGlobe();
+           //wwd.removeLayer("All Things Cluster");
            wwd.redraw();
         }
 
@@ -2016,8 +2023,10 @@ function TrigReturnAllDevices(){
         if(!typeof markerClusterMobTh == 'undefined'){
             //markerClusterMobTh.hideAllLevels();
             //markerClusterMobTh.hideAllSingle();
-            //markerClusterMobTh.removeClusterLayer();
-            wwd.removeLayer("Mob Things Cluster");
+            markerClusterMobTh.updateGlobe(wwd);
+            markerClusterMobTh.removeClusterLayer();
+            wwd = markerClusterMobTh.getGlobe();
+           // wwd.removeLayer("Mob Things Cluster");
             wwd.redraw();
         }
     }
@@ -2041,8 +2050,10 @@ async function SearchByCountryAndDraw(){
     if(!typeof markerCluster == 'undefined'){
        // markerCluster.hideAllLevels();
        // markerCluster.hideAllSingle();
-       //markerCluster.removeClusterLayer();
-       wwd.removeLayer("All Things Cluster");
+       markerCluster.updateGlobe(wwd);
+       markerCluster.removeClusterLayer();
+       wwd = markerCluster.getGlobe();
+       //wwd.removeLayer("All Things Cluster");
        wwd.redraw();
     }
 
@@ -2180,8 +2191,10 @@ async function SearchByCityAndDraw(){
     if(!typeof markerCluster == 'undefined'){
         //markerCluster.hideAllLevels();
         //markerCluster.hideAllSingle();
-        //markerCluster.removeClusterLayer();
-        wwd.removeLayer("All Things Cluster");
+        markerCluster.updateGlobe(wwd);
+        markerCluster.removeClusterLayer();
+        wwd = markerCluster.getGlobe();
+       // wwd.removeLayer("All Things Cluster");
         wwd.redraw();
     }
 
@@ -2839,14 +2852,19 @@ function stopTimeSeriesAnimation(){
     if(selectedVal == 'M'){
         //markerClusterMobTh.showAllLevels();
         //markerClusterMobTh.showAllSingle();
-        //markerClusterMobTh.addClusterLayer();
-        wwd.addLayer("Mob Things Cluster");
-        //wwd.redraw();
+        markerClusterMobTh.updateGlobe(wwd);
+        markerClusterMobTh.addClusterLayer();
+        wwd = markerClusterMobTh.getGlobe();
+        //wwd.addLayer("Mob Things Cluster");
+        wwd.redraw();
+
     } else if (selectedVal == 'S'){
         //markerCluster.showAllLevels();
-        //markerCluster.addClusterLayer();
-        wwd.addLayer("All Things Cluster");
-        //wwd.redraw();
+        markerCluster.updateGlobe(wwd);
+        markerCluster.addClusterLayer();
+        wwd = markerCluster.getGlobe();
+       // wwd.addLayer("All Things Cluster");
+        wwd.redraw();
     }
     
     time_step=0;
@@ -2867,8 +2885,11 @@ function OnChangeStationaryMobile(){
 
        // markerCluster.hideAllLevels();
        // markerCluster.hideAllSingle();
-        //markerCluster.removeClusterLayer();
-        wwd.removeLayer("All Things Cluster");
+        markerCluster.updateGlobe(wwd);
+        markerCluster.removeClusterLayer();
+
+        wwd = markerCluster.getGlobe();
+        //wwd.removeLayer("All Things Cluster");
         wwd.redraw();
         //wwd.redraw();
 
@@ -2899,8 +2920,10 @@ function OnChangeStationaryMobile(){
 
         if(!typeof markerClusterMobTh == 'undefined'){
             //markerClusterMobTh.showAllLevels();
-           // markerClusterMobTh.addClusterLayer();
-           wwd.addLayer("Mob Things Cluster");
+            markerClusterMobTh.updateGlobe(wwd);
+            markerClusterMobTh.addClusterLayer();
+            wwd = markerClusterMobTh.getGlobe();
+           //wwd.addLayer("Mob Things Cluster");
            wwd.redraw();
         }
         //wwd.redraw();
@@ -2913,8 +2936,10 @@ function OnChangeStationaryMobile(){
         //markerClusterMobTh.hideAllLevels();
         //markerClusterMobTh.hideAllSingle();
         if(!typeof markerClusterMobTh == 'undefined'){
-            //markerClusterMobTh.removeClusterLayer();
-            wwd.removeLayer("Mob Things Cluster");
+            markerClusterMobTh.updateGlobe(wwd);
+            markerClusterMobTh.removeClusterLayer();
+            wwd = markerClusterMobTh.getGlobe();
+            //wwd.removeLayer("Mob Things Cluster");
             wwd.redraw();
         }
        
@@ -2934,8 +2959,11 @@ function OnChangeStationaryMobile(){
 
             if(!typeof markerCluster == 'undefined'){
                 //markerCluster.showAllLevels();
-                //markerClusterMobTh.addClusterLayer();
-                wwd.addLayer("All Things Cluster");
+                markerClusterMobTh.updateGlobe(wwd);
+                markerClusterMobTh.addClusterLayer();
+
+                wwd = markerClusterMobTh.getGlobe();
+                //wwd.addLayer("All Things Cluster");
                 wwd.redraw();
                
             }
@@ -2975,8 +3003,10 @@ async function VisualizeMobileThings(){
     if(!(typeof markerClusterMobTh == 'undefined')){
         //markerClusterMobTh.hideAllLevels();
        // markerClusterMobTh.hideAllSingle();
-        //markerClusterMobTh.removeClusterLayer();
-        wwd.removeLayer("Mob Things Cluster");
+        markerClusterMobTh.updateGlobe(wwd);
+        markerClusterMobTh.removeClusterLayer();
+        //wwd.removeLayer("Mob Things Cluster");
+        wwd = markerClusterMobTh.getGlobe();
         wwd.redraw();
         //wwd.redraw();
         delete markerClusterMobTh;
@@ -2993,6 +3023,8 @@ async function VisualizeMobileThings(){
                 radius: 45
         });
     }
+
+    wwd = markerClusterMobTh.getGlobe();
 
     for(i=0;i<mobileThingsDB.length;i++){
 
@@ -3025,7 +3057,6 @@ async function VisualizeMobileThings(){
                     mobThToVisEl.longitude = midLon;
 
                     
-
                     for (i=0;i<mobGeoJSON.features.length;i++){
 
                         
@@ -3105,6 +3136,7 @@ async function VisualizeMobileThings(){
         console.log(geoJSONArr),
 
         markerClusterMobTh.generateClusterCustomImg(geoJSONArr);
+        wwd = markerClusterMobTh.getGlobe();
 
         document.getElementById('selectSensor').addEventListener("change", MobThOnSelectedGlobeLookAtLoc); 
         document.getElementById('selectSensor').disabled = false;
