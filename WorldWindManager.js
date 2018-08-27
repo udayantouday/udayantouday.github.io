@@ -562,9 +562,14 @@ async function StartWorldWind() {
                         for(i=0;i<values.length;i++){
 
                            
-                            str_to_form = clone(str_to_form+"Sensor: " +values[i].items.parameterName+"<br> Description: "+values[i].items.qualifier+
-                            "<br> Last Value: "+values[i].items.latestReading.value+" "+values[i].items.unitName+
-                            "<br> Last Seen: "+new Date(values[i].items.latestReading.dateTime).toUTCString()+"<br><br>");
+                            str_to_form = str_to_form+"Sensor: " +values[i].items.parameterName+"<br> Description: "+values[i].items.qualifier;
+                            
+                            if((!!(values[i].items.latestReading.value)) || (!!(values[i].items.latestReading.dateTime))){
+                                str_to_form = str_to_form+"<br> Last Value: "+values[i].items.latestReading.value+" "+values[i].items.unitName+
+                                "<br> Last Seen: "+new Date(values[i].items.latestReading.dateTime).toUTCString()+"<br><br>";
+                            } else {
+                                str_to_form = str_to_form+"<br> Sensor status: OFFLINE";
+                            }
                             
                             //document.getElementById('selectSensor').options[i] = document.createElement('option').option.values[0].data.sensors[i];
                             //document.getElementById('selectSensor').options[i].text = values[0].data.sensors[i].id;
