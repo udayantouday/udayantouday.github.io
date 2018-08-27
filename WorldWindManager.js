@@ -562,9 +562,9 @@ async function StartWorldWind() {
                         for(i=0;i<values.length;i++){
 
                            
-                            str_to_form = clone(str_to_form+"Sensor: " +values[i].parameterName+"<br> Description: "+values[i].qualifier+
-                            "<br> Last Value: "+values[i].items.latestReading.value+" "+values[i].unitName+
-                            "<br> Last Seen: "+new Date(values[i].items.latestReading.dateTime).toISOString()+"<br><br>");
+                            str_to_form = clone(str_to_form+"Sensor: " +values[i].items.parameterName+"<br> Description: "+values[i].items.qualifier+
+                            "<br> Last Value: "+values[i].items.latestReading.value+" "+values[i].items.unitName+
+                            "<br> Last Seen: "+new Date(values[i].items.latestReading.dateTime).toUTCString()+"<br><br>");
                             
                             //document.getElementById('selectSensor').options[i] = document.createElement('option').option.values[0].data.sensors[i];
                             //document.getElementById('selectSensor').options[i].text = values[0].data.sensors[i].id;
@@ -1402,6 +1402,8 @@ async function CreateClusteredThings(ThingsLocationArr){
             params.info = ThingsLocationArr[i];
 
             params.info.displayName = ThingsLocationArr[i].name;
+
+            delete params.info.name;
             //params.info.providerID = ThingsLocationArr[i].providerID;
 
             //params.info.latitude = ThingsLocationArr[i].latitude;
