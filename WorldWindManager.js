@@ -568,7 +568,7 @@ async function StartWorldWind() {
                                 str_to_form = str_to_form+"<br> Last Value: "+values[i].items.latestReading.value+" "+values[i].items.unitName+
                                 "<br> Last Seen: "+new Date(values[i].items.latestReading.dateTime).toUTCString()+"<br><br>";
                             } else {
-                                str_to_form = str_to_form+"<br> Sensor status: OFFLINE";
+                                str_to_form = str_to_form+"<br> Sensor status: OFFLINE <br><br>";
                             }
                             
                             //document.getElementById('selectSensor').options[i] = document.createElement('option').option.values[0].data.sensors[i];
