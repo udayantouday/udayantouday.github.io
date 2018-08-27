@@ -1474,8 +1474,8 @@ async function ExtractAllThingsLocation(){
 		EnglFloodArrEl.longitude = tempEnglFlood[i].lon;
 		EnglFloodArrEl.country = "GB";
 		
-		delete tempEnglFlood[i].lat;
-		delete tempEnglFlood[i].lon;
+		//delete tempEnglFlood[i].lat;
+		//delete tempEnglFlood[i].lon;
 
 		EnglFloodArrEl.thingTag = ["river","water","flood","monitoring","disaster","flood monitoring","river flood","river flood monitoring"];
 		EnglFloodArrEl.providerID = "engfloodenv"
