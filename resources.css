@@ -1,0 +1,245 @@
+.TimeSeriesTimeStamp {
+  color: white;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.thingsSummaryClass{
+    overflow: scroll;
+    height: 650px;
+}
+
+
+/*------------------------------------------------------------
+                  Body and Home
+--------------------------------------------------------------*/
+
+html, body{
+  height: 100%;
+
+}
+body{
+  color: #D3D3D3;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  font-family: 'Raleway',sans-serif;
+}
+
+p{
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 24px;
+  color: black;
+
+}
+section{
+  background: #F5F5F5;
+  overflow: hidden;
+}
+
+
+
+
+/*--------------------------------------------------------
+
+                  Headings
+--------------------------------------------------------------*/
+.vertical-heading h5{
+  color: #942253;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  word-spacing: 9px;
+  display: inline-block;
+  -webki-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  position: relative;
+  top: 60px;
+  left: -53px;
+
+}
+.vertical-heading h2{
+  line-height: 45px;
+  margin: 0 0 0 35px;
+  font-size: 42px;
+  font-weight: 100;
+  color: #942253;
+
+}
+
+.horizontal-heading {
+  margin-bottom: 80px;
+
+
+}
+.horizontal-heading h5{
+  font-size: 16px;
+  color: #942253;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 10px;
+
+
+}
+
+.horizontal-heading h2{
+  font-size: 42px;
+  font-weight: 100;
+  line-height: 45px;
+  margin: 0;
+}
+
+
+
+/*--------------------------------------------------------------
+| |           Menu
+--------------------------------------------------------*/
+
+.Buttons{
+    position: relative;
+    top: 0px;
+}
+
+
+.button {
+    float: left;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    margin-left: 5px;
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: bold;
+    background-color:  #2054AA;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    padding: 9px;
+    border-radius: 5px;
+    /* margin: 0 auto; */
+}
+
+.menu {
+    float: left;
+    position: relative;
+    width: auto;
+    z-index: 10;
+    clear: left;
+    margin: auto;
+    transition: all 1s;
+    max-width: 90%;
+    left: 5px;
+    top: 5px;
+    padding: 10px;
+    color: white;
+    font: 'Raleway',sans-serif;
+    background-color: #942253;
+    padding: 10px;
+    border-bottom-right-radius: 5px;
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#gaio {
+  background-color: #C0C0C0;
+
+}
+
+#logo {
+  position: absolute;
+
+}
+
+#head {
+  color: black;
+
+}
+/************************************/
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+     /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
