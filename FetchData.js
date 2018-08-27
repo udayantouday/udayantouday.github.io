@@ -1468,12 +1468,16 @@ async function ExtractAllThingsLocation(){
 
 	  for(i=0;i<tempEnglFlood.length;i++){
 
+		
+
 		var EnglFloodArrEl = tempEnglFlood[i];
 		EnglFloodArrEl.name = tempEnglFlood[i].catchmentName+" Flood Monitoring Station";
 		EnglFloodArrEl.latitude = tempEnglFlood[i].lat;
 		EnglFloodArrEl.longitude = tempEnglFlood[i].long;
 		EnglFloodArrEl.country = "GB";
 		
+
+		delete EnglFloodArrEl.label;
 		//delete tempEnglFlood[i].lat;
 		//delete tempEnglFlood[i].lon;
 
