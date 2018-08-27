@@ -1404,8 +1404,8 @@ async function CreateClusteredThings(ThingsLocationArr){
             params.info.displayName = ThingsLocationArr[i].name;
             params.info.providerID = ThingsLocationArr[i].providerID;
 
-            //params.info.latitude = ThingsLocationArr[i].latitude;
-            //params.info.longitude = ThingsLocationArr[i].longitude;
+            params.info.latitude = ThingsLocationArr[i].latitude;
+            params.info.longitude = ThingsLocationArr[i].longitude;
 
             params.info.thingTag = ThingsLocationArr[i].thingTag;
 
