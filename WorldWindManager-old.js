@@ -145,8 +145,6 @@ async function StartWorldWind() {
            document.getElementById('spanTimeUnit').disabled = true;
        }
 
-       CloseDevSumm();
-
     } else if (topPickedObject) {
         //console.log("element obj id: " +document.getElementById(topPickedObject.userObject.displayName));
         
@@ -233,7 +231,7 @@ async function StartWorldWind() {
                     
                     document.getElementById('thingsSummaryID').appendChild(newContent);
 
-                    
+                    /*
                     document.getElementById('startTime').disabled = false;
                     document.getElementById('endTime').disabled = false;
                     document.getElementById('spanTimeNum').disabled = true;
@@ -241,7 +239,7 @@ async function StartWorldWind() {
                     document.getElementById('selectSensor').disabled = false;
                     document.getElementById('submitStartEndDateTime').disabled = false;
                     document.getElementById('submitStartEndDateTimeTimeSeries').disabled = false;
-                    
+                    */
                 
                 });
 
@@ -282,7 +280,7 @@ async function StartWorldWind() {
                     newContent.innerHTML = StrToForm;
                     document.getElementById('thingsSummaryID').appendChild(newContent);
 
-                    
+                    /*
                     document.getElementById('startTime').disabled = false;
                     document.getElementById('endTime').disabled = false;
                     document.getElementById('selectSensor').disabled = false;
@@ -290,7 +288,7 @@ async function StartWorldWind() {
                     document.getElementById('spanTimeNum').disabled = false;
                     document.getElementById('spanTimeUnit').disabled = false;
                     document.getElementById('submitStartEndDateTimeTimeSeries').disabled = false;
-                    
+                    */
 
             }  else if (topPickedObject.userObject.providerID === "smartcitizen"){
 
@@ -332,7 +330,7 @@ async function StartWorldWind() {
                     
                     document.getElementById('thingsSummaryID').appendChild(newContent);
 
-                    
+                    /*
                     document.getElementById('startTime').disabled = false;
                     document.getElementById('endTime').disabled = false;
                     document.getElementById('spanTimeNum').disabled = true;
@@ -340,7 +338,7 @@ async function StartWorldWind() {
                     document.getElementById('selectSensor').disabled = false;
                     document.getElementById('submitStartEndDateTime').disabled = false;
                     document.getElementById('submitStartEndDateTimeTimeSeries').disabled = false;
-                    
+                    */
                 
                 });
 
@@ -371,7 +369,7 @@ async function StartWorldWind() {
                     
                     document.getElementById('thingsSummaryID').appendChild(newContent);
 
-                    
+                    /*
                     document.getElementById('startTime').disabled = true;
                     document.getElementById('endTime').disabled = true;
                     document.getElementById('selectSensor').disabled = true;
@@ -379,7 +377,7 @@ async function StartWorldWind() {
                     document.getElementById('spanTimeNum').disabled = true;
                     document.getElementById('spanTimeUnit').disabled = true;
                     document.getElementById('submitStartEndDateTimeTimeSeries').disabled = true;
-                    
+                    */
                 
                 });
 
@@ -416,7 +414,7 @@ async function StartWorldWind() {
                 document.getElementById('thingsSummaryID').appendChild(newContent);
 
             
-                
+                /*
                     document.getElementById('startTime').disabled = false;
                     document.getElementById('endTime').disabled = false;
                     document.getElementById('selectSensor').disabled = false;
@@ -424,7 +422,7 @@ async function StartWorldWind() {
                     document.getElementById('spanTimeNum').disabled = true;
                     document.getElementById('spanTimeUnit').disabled = true;
                     document.getElementById('submitStartEndDateTimeTimeSeries').disabled = false;
-                
+                */
             
             } else if (topPickedObject.userObject.providerID === "thingspeak"){
 
@@ -439,20 +437,14 @@ async function StartWorldWind() {
 
                     var filt_res={};
                     var str_to_form = "Device Name: " +topPickedObject.userObject.displayName+ "<br> Provider: ThingSpeak <br><br>";
-
-                    if(!!(values[0].channel["updated_at"])){
-                        str_to_form = str_to_form+"Last Seen: "+new Date (values[0].channel["updated_at"]).toUTCString()+"<br><br>";
-                    } else {
-                        str_to_form = str_to_form+"Last Seen: Information not Available <br><br>";
-                    }
-                    
                     i=1;
                     for(var keys in values[0].channel){
                         
                         if(keys.toLowerCase().indexOf("field")>=0){
                             //console.log(values[0].channel);
-                            str_to_form = str_to_form+"Sensor: "+values[0].channel[keys]+"<br> Last Value: "+values[0].feeds[values[0].feeds.length-1][keys]+"<br><br>";
+                            str_to_form = clone(str_to_form+"Sensor: "+values[0].channel[keys]+"<br> Last Value: "+new Date(values[0].feeds[values[0].feeds.length-1][keys]).toUTCString()+"<br><br>");
 
+                            
                             var newContent=document.createElement('option');
                             newContent.id = "sensorOption"+i;
                             newContent.value = i;
@@ -462,7 +454,7 @@ async function StartWorldWind() {
                         }
                     }
 
-                    
+                    str_to_form = clone(str_to_form+"Last Seen: "+new Date (values[0].feeds[values[0].feeds.length-1]["created_at"])).toUTCString();
 
                     var newContent = document.createElement("div");
                     newContent.id = "existingThingsSummary";
@@ -471,7 +463,7 @@ async function StartWorldWind() {
                     
                     document.getElementById('thingsSummaryID').appendChild(newContent);
 
-                    
+                    /*
                     document.getElementById('startTime').disabled = false;
                     document.getElementById('endTime').disabled = false;
                     document.getElementById('selectSensor').disabled = false;
@@ -479,9 +471,10 @@ async function StartWorldWind() {
                     document.getElementById('spanTimeNum').disabled = true;
                     document.getElementById('spanTimeUnit').disabled = true;
                     document.getElementById('submitStartEndDateTimeTimeSeries').disabled = false;
+                    */
                     
-                    
-                
+                        
+                        
                 
                 });
 
@@ -541,15 +534,14 @@ async function StartWorldWind() {
                         newContent.innerHTML = StrToForm;
                         document.getElementById('thingsSummaryID').appendChild(newContent);
 
-                        
+                        /*
                         document.getElementById('spanTimeNum').disabled = true;
                         document.getElementById('spanTimeUnit').disabled = true;
-                        document.getElementById('startTime').disabled = true;
-                        document.getElementById('endTime').disabled = true;
-                        document.getElementById('selectSensor').disabled = true;
-                        document.getElementById('submitStartEndDateTime').disabled = true;
-                        document.getElementById('submitStartEndDateTimeTimeSeries').disabled = true;
-                        
+                        document.getElementById('startTime').disabled = false;
+                        document.getElementById('endTime').disabled = false;
+                        document.getElementById('selectSensor').disabled = false;
+                        document.getElementById('submitStartEndDateTime').disabled = false;
+                        */
 
                 } else if (topPickedObject.userObject.placemarkType == "mobiothings"){
 
@@ -563,12 +555,6 @@ async function StartWorldWind() {
                                     newContent.id = "existingThingsSummary";
                                     newContent.innerHTML = StrToForm;
                                     document.getElementById('thingsSummaryID').appendChild(newContent);
-
-                                    document.getElementById('spanTimeNum').disabled = true;
-                                    document.getElementById('spanTimeUnit').disabled = true;
-                                   
-                                    
-                                    
                     
 
                 }
@@ -629,7 +615,7 @@ async function StartWorldWind() {
                         
                         document.getElementById('thingsSummaryID').appendChild(newContent);
 
-                        
+                        /*
                         document.getElementById('startTime').disabled = true;
                         document.getElementById('endTime').disabled = true;
                         document.getElementById('selectSensor').disabled = true;
@@ -637,7 +623,7 @@ async function StartWorldWind() {
                         document.getElementById('spanTimeNum').disabled = true;
                         document.getElementById('spanTimeUnit').disabled = true;
                         document.getElementById('submitStartEndDateTimeTimeSeries').disabled = true;
-                        
+                        */
                     
                     });
 
@@ -648,6 +634,7 @@ async function StartWorldWind() {
 
             } else {
 
+                
 
                 if(!!(document.getElementById("existingThingsSummary"))){
                     var existingEl = document.getElementById("existingThingsSummary");
@@ -670,22 +657,13 @@ async function StartWorldWind() {
 
                 }
 
+               
+
                     //document.getElementById('startTime').disabled = true;
                     //document.getElementById('endTime').disabled = true;
                     
             }
 
-            OpenDevSumm();
-
-            if(!!(topPickedObject.userObject.placemarkType)){
-
-                if(topPickedObject.userObject.placemarkType == "iothings"){
-                    SelectedStatThGlobeLookAtLoc(topPickedObject.userObject.latitude,topPickedObject.userObject.longitude);
-                }
-
-            }
-
-           
        }
 
       
@@ -706,8 +684,27 @@ async function StartWorldWind() {
             
         } else {
 
-            CloseDevSumm();
+            /*
+            if(!typeof previousUserObj == 'undefined'){
+                var placemarkToRemove = markerCluster.getPlacemarkOfIndex(previousUserObj);
+    
+                var placemarkToAdd = $.extend(true,{},placemarkToRemove);
 
+                placemarkToAdd.placemarkAttributes.imageSource = "images/thing_node.png";
+                placemarkToAdd.placemarkAttributes.imageScale = 0.22;
+        
+                markerCluster.modifyPlacemarkInIndex(placemarkToAdd,placemarkToRemove,previousUserObj);
+        
+                wwd.redraw();
+        
+                delete previousUserObj;
+           }
+           */
+
+          
+
+            
+            
 
             if(!!(document.getElementById("existingThingsSummary"))){
                 var existingEl = document.getElementById("existingThingsSummary");
@@ -726,16 +723,11 @@ async function StartWorldWind() {
                 document.getElementById('spanTimeNum').disabled = true;
                 document.getElementById('spanTimeUnit').disabled = true;
                 document.getElementById('submitStartEndDateTime').disabled = true;
-                document.getElementById('submitStartEndDateTimeTimeSeries').disabled = true;
             } 
             else if(document.getElementById("StationaryOrMobile").options[(document.getElementById("StationaryOrMobile")).selectedIndex].value == "M")
             {
-                document.getElementById('startTime').disabled = false;
-                document.getElementById('endTime').disabled = false;
                 document.getElementById('spanTimeNum').disabled = true;
                 document.getElementById('spanTimeUnit').disabled = true;
-                document.getElementById('submitStartEndDateTime').disabled = true;
-                document.getElementById('submitStartEndDateTimeTimeSeries').disabled = true;
             }
 
             
@@ -1732,34 +1724,6 @@ function getPosition(el) {
      }
   }
 
-  function GlobeMoveToLocation(query) {
-    var self = this;
-    self.geocoder = new WorldWind.NominatimGeocoder();
-    self.goToAnimator = new WorldWind.GoToAnimator(wwd);
-
-      var queryString = query;
-      if (queryString) {
-        var latitude, longitude;
-        if (queryString.match(WorldWind.WWUtil.latLonRegex)) {
-          var tokens = queryString.split(",");
-          latitude = parseFloat(tokens[0]);
-          longitude = parseFloat(tokens[1]);
-          self.goToAnimator.goTo(new WorldWind.Location(latitude, longitude));
-          
-        } else {
-          self.geocoder.lookup(queryString, function(geocoder, result) {
-            if (result.length > 0) {
-              latitude = parseFloat(result[0].lat);
-              longitude = parseFloat(result[0].lon);
-              self.goToAnimator.goTo(new WorldWind.Location(latitude, longitude));
-             
-            }
-          });
-        }
-       
-     }
-  }
-
  
 
   function IncrementalGlobeSetViewRange(range_arr){
@@ -1810,24 +1774,6 @@ function getPosition(el) {
     markerClusterMobTh.updateGlobe(wwd);
     markerClusterMobTh.handleClusterZoom(2e5,true);
     wwd = markerClusterMobTh.getGlobe();
-
-    wwd.redraw();
- }
-
- function SelectedStatThGlobeLookAtLoc(lat, lon){
-
-    var chosenLoc = {
-        "latitude": lat,
-        "longitude" : lon           
-    };
-
-
-    wwd.navigator.lookAtLocation = chosenLoc;
-    var range = wwd.navigator.range;
-
-    markerCluster.updateGlobe(wwd);
-    markerCluster.handleClusterZoom(range,true);
-    wwd = markerCluster.getGlobe();
 
     wwd.redraw();
  }
@@ -2219,13 +2165,7 @@ async function GenerateHistoricalTimeSeries(){
 
             var lat = topPickedObject.userObject.latitude;
             var lon = topPickedObject.userObject.longitude;
-
-            if((values[0].results.length>1)){
-                DrawPolygonTimeSeries(parseFloat(lat),parseFloat(lon),valArr,true,{"unit":values[0].results[0].unit});
-            } else {
-                window.alert("No historical data are available within the selected time frame");
-            }
-            
+            DrawPolygonTimeSeries(parseFloat(lat),parseFloat(lon),valArr,true,{"unit":values[0].results[0].unit});
           
 
         });
@@ -2490,10 +2430,8 @@ async function SearchByCountryAndDraw(){
     
     
     var queryLocBy = document.getElementById("selectByCountry").options[document.getElementById("selectByCountry").selectedIndex].value;
-    var LocInString = document.getElementById("selectByCountry").options[document.getElementById("selectByCountry").selectedIndex].innerHTML;
     
             for(i=0;i<allThingsDB.length;i++){
-
                 if(!!(allThingsDB[i].country)){
                    // console.log(countrycodeJS);
                     //console.log(allThingsDB[i].country);
@@ -2503,7 +2441,7 @@ async function SearchByCountryAndDraw(){
                     if(allThingsDB[i].country.toLowerCase() == queryLocBy.toLowerCase()){
                         
                         //console.log("matching name:" +allThingsDB[i].name);
-                        
+
                         var lat = parseFloat(allThingsDB[i].latitude);
                         var lon = parseFloat(allThingsDB[i].longitude);
                 
@@ -2515,14 +2453,13 @@ async function SearchByCountryAndDraw(){
                         // Assign highlight attributes for the placemark.
                         placemark.highlightAttributes = highlightAttributes;
                         placemark.displayName = allThingsDB[i].name;
-                        placemark.highlightAttributes = highlightAttributes;
-                        
-                        
-                        for(var keys in allThingsDB[i]){
-                            placemark[keys] = allThingsDB[i][keys];
-                        }
+                        placemark.providerID = allThingsDB[i].providerID;
+                        placemark.latitude = allThingsDB[i].latitude;
+                        placemark.longitude = allThingsDB[i].longitude;
 
-                        /*
+                        placemark.thingTag = allThingsDB[i].thingTag;
+                        
+                
                         if(allThingsDB[i].providerID === "smartsantander"){
                             placemark.content = allThingsDB[i].content;
                         } else if(allThingsDB[i].providerID === "opensensemap"){
@@ -2555,148 +2492,7 @@ async function SearchByCountryAndDraw(){
                         } else {
                             placemark.lastSeen = allThingsDB[i].lastSeen;
                         }
-                        */
-
-
-                        if(allThingsDB[i].providerID === "smartsantander"){
-
-                            
-                            //params.placemarkAttributes = placemarkAttributes;
-                            
-                
-                            
-                
-                          
-                
-                            placemark.content = allThingsDB[i].content;
-                
-                           
-                
-                            placemark.placemarkType = "iothings";
-                
-                           
-                
-                
-                        } else if(allThingsDB[i].providerID === "opensensemap"){
-                
-                           
-                
-                           
-                         
-                
-                           
-                          
-                
-                            placemark.sensorList = allThingsDB[i].sensorList;
-                            placemark.channelID = allThingsDB[i].channelID;
-                
-                            placemark.placemarkType = "iothings";
-                
-                
-                          
-                            
-                        } else if(allThingsDB[i].providerID === "openaq"){
-                
-                           
-                
-                            
-                       
-                
-                           
-                
-                
-                            placemark.measurements = allThingsDB[i].measurements;
-                
-                            placemark.placemarkType = "iothings";
-                
-                
-                
-                           
-                            
-                        } else if(allThingsDB[i].providerID === "netherlandssmartemission"){
-                
-                           
-                     
-                
-                          
-                
-                           
-                
-                   
-                
-                            placemark.stationID = allThingsDB[i].stationID;
-                            placemark.lastSeen = allThingsDB[i].lastSeen;
-                
-                            placemark.placemarkType = "iothings";
-                
-                
-                           
-                            
-                        } else if(allThingsDB[i].providerID === "thingspeak"){
-                
-                            
-                
-                         
-                       
-                
-                            placemark.channelID = allThingsDB[i].id;
-                            placemark.description = allThingsDB[i].description;
-                
-                            placemark.placemarkType = "iothings";
-                
-                         
-                            
-                        } else if(allThingsDB[i].providerID === "smartcitizen"){
-                
-                           
-                           
-                    
-                
-                
-                            placemark.channelID = allThingsDB[i].deviceID;
-                            placemark.lastSeen = allThingsDB[i].lastSeen;
-                
-                       
-                
-                            placemark.placemarkType = "iothings";
-                
-                           
-                            
-                        }  else if(allThingsDB[i].providerID === "safecast"){
-                
-                
-                         
-                
-                            placemark.sensorList = allThingsDB[i].sensorList;
-                           
-                            placemark.placemarkType = "iothings";
-                
-                
-                        }   else if(allThingsDB[i].providerID === "bcncat"){
-                            
-                         
-                
-                           
-                        
-                
-                            
-                            placemark.placemarkType = "iothings";
-                
-                
-                         
-                           
-                        } else if(allThingsDB[i].providerID === "engfloodenv"){
-                
-                          
-                 
-                
-                       
-                            placemark.placemarkType = "iothings";
-                
-                            
-                        }
-
-
+                        placemark.placemarkType = "iothings";
                         placemarkLayerDevByLoc.addRenderable(placemark);
                     }
                     
@@ -2710,8 +2506,6 @@ async function SearchByCountryAndDraw(){
         wwd.addLayer(placemarkLayerDevByLoc);
 
         wwd.redraw();
-
-        GlobeMoveToLocation(LocInString);
         var highlightController = new WorldWind.HighlightController(wwd);
        
 }
@@ -2784,10 +2578,6 @@ async function SearchByCityAndDraw(){
                 //this requires IE 12.0 and above
                 if(allThingsDB[i].city.toLowerCase() == queryString.trim().toLowerCase() || queryString.trim().toLowerCase().indexOf(allThingsDB[i].city.toLowerCase()) !== -1){
                 //if(allThingsDB[i].city.toLowerCase() == queryString.trim().toLowerCase()){    
-                    
-
-                
-                    /*
                     var lat = parseFloat(allThingsDB[i].latitude);
                     var lon = parseFloat(allThingsDB[i].longitude);
             
@@ -2840,203 +2630,6 @@ async function SearchByCityAndDraw(){
                     }
                     placemark.placemarkType = "iothings";
                     placemarkLayerDevByLoc.addRenderable(placemark);
-                    */
-
-                   var lat = parseFloat(allThingsDB[i].latitude);
-                   var lon = parseFloat(allThingsDB[i].longitude);
-           
-                   // Create the placemark with the attributes defined above.
-                   var placemarkPosition = new WorldWind.Position(lat, lon, 0);
-                   var placemark = new WorldWind.Placemark(placemarkPosition, false, placemarkAttributes);
-                   // Draw placemark at altitude defined above.
-                   placemark.altitudeMode = WorldWind.CLAMP_TO_GROUND;
-                   // Assign highlight attributes for the placemark.
-                   placemark.highlightAttributes = highlightAttributes;
-                   placemark.displayName = allThingsDB[i].name;
-                  
-                   
-                   
-                   for(var keys in allThingsDB[i]){
-                       placemark[keys] = allThingsDB[i][keys];
-                   }
-
-                   /*
-                   if(allThingsDB[i].providerID === "smartsantander"){
-                       placemark.content = allThingsDB[i].content;
-                   } else if(allThingsDB[i].providerID === "opensensemap"){
-                       placemark.sensorList = allThingsDB[i].sensorList;
-                       placemark.channelID = allThingsDB[i].channelID;
-                       
-                   } else if(allThingsDB[i].providerID === "openaq"){
-                       placemark.measurements = allThingsDB[i].measurements;
-                       
-                   } else if(allThingsDB[i].providerID === "netherlandssmartemission"){
-                       placemark.stationID = allThingsDB[i].stationID;
-                       placemark.lastSeen = allThingsDB[i].lastSeen;
-                   } else if(allThingsDB[i].providerID === "thingspeak"){
-                       placemark.channelID = allThingsDB[i].id;
-                       placemark.description = allThingsDB[i].description;
-                       
-                   } else if(allThingsDB[i].providerID === "smartcitizen"){
-                       placemark.channelID = allThingsDB[i].deviceID;
-                       placemark.lastSeen = allThingsDB[i].lastSeen;
-                       
-                   } else if(allThingsDB[i].providerID === "safecast"){
-                      
-                       placemark.sensorList = allThingsDB[i].sensorList;
-                       placemark.lastSeen = allThingsDB[i].lastSeen;
-                       
-                   } else if(allThingsDB[i].providerID === "safecastlog"){
-                      
-                       
-                       
-                   } else {
-                       placemark.lastSeen = allThingsDB[i].lastSeen;
-                   }
-                   */
-
-
-                   if(allThingsDB[i].providerID === "smartsantander"){
-
-                       
-                       //params.placemarkAttributes = placemarkAttributes;
-                       
-           
-                       
-           
-                     
-           
-                       placemark.content = allThingsDB[i].content;
-           
-                      
-           
-                       placemark.placemarkType = "iothings";
-           
-                      
-           
-           
-                   } else if(allThingsDB[i].providerID === "opensensemap"){
-           
-                      
-           
-                      
-                    
-           
-                      
-                     
-           
-                       placemark.sensorList = allThingsDB[i].sensorList;
-                       placemark.channelID = allThingsDB[i].channelID;
-           
-                       placemark.placemarkType = "iothings";
-           
-           
-                     
-                       
-                   } else if(allThingsDB[i].providerID === "openaq"){
-           
-                      
-           
-                       
-                  
-           
-                      
-           
-           
-                       placemark.measurements = allThingsDB[i].measurements;
-           
-                       placemark.placemarkType = "iothings";
-           
-           
-           
-                      
-                       
-                   } else if(allThingsDB[i].providerID === "netherlandssmartemission"){
-           
-                      
-                
-           
-                     
-           
-                      
-           
-              
-           
-                       placemark.stationID = allThingsDB[i].stationID;
-                       placemark.lastSeen = allThingsDB[i].lastSeen;
-           
-                       placemark.placemarkType = "iothings";
-           
-           
-                      
-                       
-                   } else if(allThingsDB[i].providerID === "thingspeak"){
-           
-                       
-           
-                    
-                  
-           
-                       placemark.channelID = allThingsDB[i].id;
-                       placemark.description = allThingsDB[i].description;
-           
-                       placemark.placemarkType = "iothings";
-           
-                    
-                       
-                   } else if(allThingsDB[i].providerID === "smartcitizen"){
-           
-                      
-                      
-               
-           
-           
-                       placemark.channelID = allThingsDB[i].deviceID;
-                       placemark.lastSeen = allThingsDB[i].lastSeen;
-           
-                  
-           
-                       placemark.placemarkType = "iothings";
-           
-                      
-                       
-                   }  else if(allThingsDB[i].providerID === "safecast"){
-           
-           
-                    
-           
-                       placemark.sensorList = allThingsDB[i].sensorList;
-                      
-                       placemark.placemarkType = "iothings";
-           
-           
-                   }   else if(allThingsDB[i].providerID === "bcncat"){
-                       
-                    
-           
-                      
-                   
-           
-                       
-                       placemark.placemarkType = "iothings";
-           
-           
-                    
-                      
-                   } else if(allThingsDB[i].providerID === "engfloodenv"){
-           
-                     
-            
-           
-                  
-                       placemark.placemarkType = "iothings";
-           
-                       
-                   }
-
-
-                   placemarkLayerDevByLoc.addRenderable(placemark);
-
                 }
                 
             } else {
@@ -3047,8 +2640,6 @@ async function SearchByCityAndDraw(){
         wwd.addLayer(placemarkLayerDevByLoc);
 
         wwd.redraw();
-
-        GlobeMoveToLocation(queryString);
         var highlightController = new WorldWind.HighlightController(wwd);
     
 }
@@ -3339,8 +2930,7 @@ async function DrawPolygonTimeSeries(Th_Lat,Th_Lon, data_val_arr,needReverse,par
 
         // Run the animation at the desired frequency.
 
-       closeAll();
-       openMenu("#side2");
+       
 
        ts_var = window.setInterval(animateTimeSeries, animationStep);
 
@@ -3767,8 +3357,6 @@ function OnChangeStationaryMobile(){
 }
 
 function TrigMobileThingsVis(){
-    var existingEl = document.getElementById("searchInProgress");
-	existingEl.style.visibility = "visible"; 
     VisualizeMobileThings();
 }
 
@@ -3808,7 +3396,7 @@ async function VisualizeMobileThings(){
         delete markerClusterMobTh;
     }
 
-   //if (typeof markerClusterMobTh == 'undefined') {
+   if (typeof markerClusterMobTh == 'undefined') {
            markerClusterMobTh = new MarkerCluster(wwd, {
                 maxLevel: 7,
                 smooth: false,
@@ -3818,11 +3406,11 @@ async function VisualizeMobileThings(){
                 //attributeColor: null,
                 radius: 45
         });
-    //}
+    }
 
     wwd = markerClusterMobTh.getGlobe();
 
-    //console.log(mobileThingsDB);
+    console.log(mobileThingsDB);
 
     var mobThPromArrList = [];
     var mobThUserIDArrList = [];
@@ -3941,9 +3529,6 @@ async function VisualizeMobileThings(){
         document.getElementById('selectSensor').addEventListener("change", MobThOnSelectedGlobeLookAtLoc); 
         document.getElementById('selectSensor').disabled = false;
         document.getElementById('submitStartEndDateTimeTimeSeries').disabled = false;
-
-        var existingEl = document.getElementById("searchInProgress");
-	    existingEl.style.visibility = "hidden"; 
 
     });
     
@@ -4397,135 +3982,6 @@ function CreatePlacemarkSearchByOthersLayer(ThingsListEl){
             placemark.highlightAttributes = highlightAttributes;
 
             placemark.displayName = ThingsListEl.name;
-
-
-                        
-                        for(var keys in ThingsListEl){
-                            placemark[keys] = ThingsListEl[keys];
-                        }
-
-
-
-                        if(ThingsListEl.providerID === "smartsantander"){
-
-                            
-                            //params.placemarkAttributes = placemarkAttributes;
-                            
-                
-                            
-                
-                          
-                
-                            placemark.content = ThingsListEl.content;
-                
-                           
-                
-                            placemark.placemarkType = "iothings";
-                
-                           
-                
-                
-                        } else if(ThingsListEl.providerID === "opensensemap"){
-                
-                           
-                
-                            placemark.sensorList = ThingsListEl.sensorList;
-                            placemark.channelID = ThingsListEl.channelID;
-                
-                            placemark.placemarkType = "iothings";
-                
-                
-                          
-                            
-                        } else if(ThingsListEl.providerID === "openaq"){
-                
-                           
-                
-                
-                            placemark.measurements = ThingsListEl.measurements;
-                
-                            placemark.placemarkType = "iothings";
-                
-                
-                
-                           
-                            
-                        } else if(ThingsListEl.providerID === "netherlandssmartemission"){
-                
-                           
-                
-                            placemark.stationID = ThingsListEl.stationID;
-                            placemark.lastSeen = ThingsListEl.lastSeen;
-                
-                            placemark.placemarkType = "iothings";
-                
-                
-                           
-                            
-                        } else if(ThingsListEl.providerID === "thingspeak"){
-                
-                            
-                
-                         
-                       
-                
-                            placemark.channelID =ThingsListEl.id;
-                            placemark.description = ThingsListEl.description;
-                
-                            placemark.placemarkType = "iothings";
-                
-                         
-                            
-                        } else if(ThingsListEl.providerID === "smartcitizen"){
-                
-                           
-                           
-                    
-                
-                
-                            placemark.channelID = ThingsListEl.deviceID;
-                            placemark.lastSeen = ThingsListEl.lastSeen;
-                
-                       
-                
-                            placemark.placemarkType = "iothings";
-                
-                           
-                            
-                        }  else if(ThingsListEl.providerID === "safecast"){
-                
-                
-                         
-                
-                            placemark.sensorList = ThingsListEl.sensorList;
-                           
-                            placemark.placemarkType = "iothings";
-                
-                
-                        }   else if(ThingsListEl.providerID === "bcncat"){
-                            
-                         
-                            
-                            placemark.placemarkType = "iothings";
-                
-                
-                         
-                           
-                        } else if(ThingsListEl.providerID === "engfloodenv"){
-                
-                          
-                 
-                
-                       
-                            placemark.placemarkType = "iothings";
-                
-                            
-                        }
-
-
-                        
-
-            /*
             placemark.providerID = ThingsListEl.providerID;
 
             placemark.latitude = ThingsListEl.latitude;
@@ -4635,7 +4091,6 @@ function CreatePlacemarkSearchByOthersLayer(ThingsListEl){
             
 
         }
-        */
 
     return placemark;
 }

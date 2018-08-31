@@ -47,9 +47,6 @@ var cndCityParamsActual = ['Calgary','Edmonton','Kamloops','Kluane Lake','Montre
 		
 			DisableSearchButton();
 			DisableReturnAllDevices();
-
-			var existingEl = document.getElementById("searchInProgress");
-	        existingEl.style.visibility = "visible";
 			
 			console.log("start searching....");
 		    
@@ -816,7 +813,7 @@ var cndCityParamsActual = ['Calgary','Edmonton','Kamloops','Kluane Lake','Montre
 
 									Promise.all(all_Query_Proms).then(function(values){
 
-										
+										window.alert("Search is complete!");
 										
 										var extraction_prom = ExtractAllThingsLocation();
 
@@ -836,10 +833,6 @@ var cndCityParamsActual = ['Calgary','Edmonton','Kamloops','Kluane Lake','Montre
 
 											Promise.all([prom]).then(function(values){
 												delete allThingsPreviewDB;
-												var existingEl = document.getElementById("searchInProgress");
-												existingEl.style.visibility = "hidden"; 
-            									//existingEl.parentNode.removeChild(existingEl);
-												window.alert("Search is complete!");
 											});
 
 										});
@@ -1273,8 +1266,12 @@ tempDweet=[];
 
 function StartApp() {
 	var prom_worldwindstart = StartWorldWind();
-	
-	
+
+	Promise.all([prom_worldwindstart]).then(function(values){
+
+		setTimeout(fetchData,250);
+		//var prom_fetch_data = fetchData();
+	});
 	//console.log("Triggering search....");
 	
 }
@@ -1332,10 +1329,8 @@ async function ExtractAllThingsLocation(){
 				"Sensor" : tempOSM[i].sensors[j].sensorType,
 			}
 			thingTag.push(tempOSM[i].sensors[j].title);
-			var dupl = (tempOSM[i].sensors[j].title).replace("PM.","pm");
-			var dupl2 = (tempOSM[i].sensors[j].title).replace("rel.","relative");
+			var dupl = (tempOSM[i].sensors[j].title).replace(".","");
 			thingTag.push(dupl);
-			thingTag.push(dupl2);
 			if((tempOSM[i].sensors[j].lastMeasurement)){
 				sensorListDet["Last Value"] =  tempOSM[i].sensors[j].lastMeasurement.value;
 				sensorListDet["Last Seen"] = tempOSM[i].sensors[j].lastMeasurement.createdAt;
@@ -1463,8 +1458,6 @@ async function ExtractAllThingsLocation(){
 		BCNArrEl.latitude = tempBCN[i].centroid.latitude;
 		BCNArrEl.longitude = tempBCN[i].centroid.longitude;
 		BCNArrEl.thingTag = [(tempBCN[i].type).replace("_"," ")];
-		var addThTag = ["smart city", "city", "smart"];
-		BCNArrEl.thingTag = (BCNArrEl.thingTag).concat(addThTag);
 		BCNArrEl.providerID = "bcncat"
 		allThingsPreviewDB.push(BCNArrEl);
 	  }
@@ -1475,6 +1468,7 @@ async function ExtractAllThingsLocation(){
 
 	  for(i=0;i<tempEnglFlood.length;i++){
 
+		
 
 		var EnglFloodArrEl = tempEnglFlood[i];
 		EnglFloodArrEl.name = tempEnglFlood[i].catchmentName+" Flood Monitoring Station";

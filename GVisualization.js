@@ -62,7 +62,7 @@ function drawCrosshairs(revArr,yAxisLabel,htmlTag,needReverse) {
 
       var chart_div = document.getElementById(htmlTag);
 
-      var chart_img_btn = document.createElement('button');
+      
 
       var chart = new google.visualization.LineChart(chart_div);
 
@@ -71,6 +71,7 @@ function drawCrosshairs(revArr,yAxisLabel,htmlTag,needReverse) {
      //chart_img_div.innerHTML = '<img src="' + chart.getImageURI() + '">';
         console.log(chart_div.innerHTML);
 
+        var chart_img_btn = document.createElement('button');
         chart_img_btn.type='button';
         chart_img_btn.id = 'btn_chart_png';
         var link = chart.getImageURI();
@@ -205,20 +206,21 @@ function drawCrosshairs(revArr,yAxisLabel,htmlTag,needReverse) {
                         Promise.all([prom2]).then(function(values){
                             for(i=0;i<values[0].feeds.length;i++){
                                 valArr.push([values[0].feeds[i]["created_at"], values[0].feeds[i]["field"+fieldID]]);
-                                drawCrosshairs(valArr,values[0].channel["field"+fieldID],"chart_div",true);
+                               
 
                                 document.getElementById("generateCSV").innerHTML = "Generate and Download CSV";
                                 document.getElementById("generateCSV").disabled = false;
                             }
+                            drawCrosshairs(valArr,values[0].channel["field"+fieldID],"chart_div",true);
                         });
                     } else {
                         for(i=0;i<values[0].feeds.length;i++){
                             valArr.push([values[0].feeds[i]["created_at"], values[0].feeds[i]["field"+fieldID]]);
-                            drawCrosshairs(valArr,values[0].channel["field"+fieldID],"chart_div",true);
-
+                           
                             document.getElementById("generateCSV").innerHTML = "Generate and Download CSV";
                             document.getElementById("generateCSV").disabled = false;
                         }
+                        drawCrosshairs(valArr,values[0].channel["field"+fieldID],"chart_div",true);
                     }
 
                 });
@@ -442,7 +444,7 @@ function drawCrosshairs(revArr,yAxisLabel,htmlTag,needReverse) {
       
         //var url = "https://api.openaq.org/v1/measurements"+toHtmlQuery_NoURI(params);
         
-        var url = "http://api.thingspeak.com/channels/"+channelID+"/field/"+fieldID+".json"+toHtmlQuery_NoURI(params);
+        var url = "https://api.thingspeak.com/channels/"+channelID+"/field/"+fieldID+".json"+toHtmlQuery_NoURI(params);
 
         var prom = fetch(url).then(function(response) {
             if (!response.ok) {

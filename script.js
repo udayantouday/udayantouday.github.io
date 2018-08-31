@@ -1,79 +1,58 @@
+function close() {
+  $("#side").hide();
+  $("#side").data("open", 0);
+  $("#side2").hide();
+  $("#side2").data("open", 0);
+  $("#side3").hide();
+  $("#side3").data("open", 0);
+}
 
-  alret("script is working");
-  console.log("working");
+function closeMenu(htmlID) {
+  $(htmlID).hide();
+  $(htmlID).data("open", 0);
+}
 
-$(function() {
-  alret("fn in script is working");
+function openMenu(htmlID) {
+  $(htmlID).show();
+  $(htmlID).data("open", 1);
+}
 
-  $(".menu").draggable();
+$("#search").click(function() {
+  var open = $("#side").data("open");
+  close();
+  if (!open) {
+    $("#side").show();
+    $("#side").data("open", 1);
 
-  function close() {
-    $("#sideSearch").hide();
-    $("#sideSearch").data("open", 0);
-
+  } else {
+    $("#side").hide();
+    $("#side").data("open", 0);
   }
-
-  $("#search").click(function () {
-             var open = $("#sideSearch").data("open");
-             close();
-             if (!open) {
-                 $("#sideSearch").show();
-                 $("#sideSearch").data("open", 1);
-
-             } else {
-                 $("#sideSearch").hide();
-                 $("#sideSearch").data("open", 0);
-             }
-         });
-
-
-
 });
 
+$("#hist").click(function() {
+  var open = $("#side2").data("open");
+  closeMenu("#side");
+  closeMenu("#side2");
+  if (!open) {
+    $("#side2").show();
+    $("#side2").data("open", 1);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$(document).ready(function() {
-  $('.drawer').drawer({
-  class: {
-    nav: 'drawer-nav',
-    toggle: 'drawer-toggle',
-    overlay: 'drawer-overlay',
-    open: 'drawer-open',
-    close: 'drawer-close',
-    dropdown: 'drawer-dropdown'
-  },
-  iscroll: {
-    // Configuring the iScroll
-    // https://github.com/cubiq/iscroll#configuring-the-iscroll
-    mouseWheel: true,
-    preventDefault: false
-  },
-  showOverlay: true
-});
+  } else {
+    $("#side2").hide();
+    $("#side2").data("open", 0);
+  }
 });
 
+$("#summ").click(function() {
+  var open = $("#side3").data("open");
+  //close();
+  if (!open) {
+    $("#side3").show();
+    $("#side3").data("open", 1);
 
-
-
-/* Set the width of the side navigation to 250px */
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
-
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
+  } else {
+    $("#side3").hide();
+    $("#side3").data("open", 0);
+  }
+});

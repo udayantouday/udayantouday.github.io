@@ -11,93 +11,6 @@
 }
 
 
-/*------------------------------------------------------------
-                  Body and Home
---------------------------------------------------------------*/
-
-html, body{
-  height: 100%;
-
-}
-body{
-  color: #D3D3D3;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6{
-  font-family: 'Raleway',sans-serif;
-}
-
-p{
-  font-family: "Open Sans", sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 24px;
-  color: black;
-
-}
-section{
-  background: #F5F5F5;
-  overflow: hidden;
-}
-
-
-
-
-/*--------------------------------------------------------
-
-                  Headings
---------------------------------------------------------------*/
-.vertical-heading h5{
-  color: #942253;
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-  word-spacing: 9px;
-  display: inline-block;
-  -webki-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-  position: relative;
-  top: 60px;
-  left: -53px;
-
-}
-.vertical-heading h2{
-  line-height: 45px;
-  margin: 0 0 0 35px;
-  font-size: 42px;
-  font-weight: 100;
-  color: #942253;
-
-}
-
-.horizontal-heading {
-  margin-bottom: 80px;
-
-
-}
-.horizontal-heading h5{
-  font-size: 16px;
-  color: #942253;
-  text-transform: uppercase;
-  display: inline-block;
-  margin-bottom: 10px;
-
-
-}
-
-.horizontal-heading h2{
-  font-size: 42px;
-  font-weight: 100;
-  line-height: 45px;
-  margin: 0;
-}
-
-
-
 /*--------------------------------------------------------------
 | |           Menu
 --------------------------------------------------------*/
@@ -128,12 +41,12 @@ section{
 .menu {
     float: left;
     position: relative;
-    width: auto;
+    width: 300px;
     z-index: 10;
     clear: left;
     margin: auto;
     transition: all 1s;
-    max-width: 90%;
+    /**max-width: 30%;**/
     left: 5px;
     top: 5px;
     padding: 10px;
@@ -141,12 +54,54 @@ section{
     font: 'Raleway',sans-serif;
     background-color: #942253;
     padding: 10px;
-    border-bottom-right-radius: 5px;
+    border-radius: 5px;
     display: none;
+
+}
+
+.menuSumm {
+    float: right;
+    position: relative;
+    width: 300px;
+    z-index: 10;
+    clear: none;
+    margin: auto;
+    transition: all 1s;
+    /**max-width: 30%;**/
+    left: 5px;
+    top: 5px;
+    padding: 10px;
+    color: white;
+    font: 'Raleway',sans-serif;
+    background-color: #942253;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+
 }
 
 
+#globe{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: all 0.5s;
+}
 
+#canvasOne{
+  width: 100%;
+  height: 100%;
+  float: left;
+  background-color: #202E75;
+}
+
+#startTime{
+    color: black;
+  }
+
+  #endTime{
+    color: black;
+  }
 
 
 
